@@ -1,0 +1,71 @@
+<div class="container">
+    <div>
+        <mat-grid-list cols="2">
+            <mat-grid-tile>
+                <form [formGroup]="newRoomForm" (ngSubmit)="onCreate()">
+                    <mat-card>
+                        <mat-card-title>{{ 'PAGES.HOME.FORM.NEW-ROOM' | translate }}</mat-card-title>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAGES.HOME.FORM.USERNAME' | translate }}</mat-label>
+                                <input matInput 
+                                    placeholder="{{ 'PAGES.HOME.FORM.USERNAME' | translate }}" 
+                                    name="username" 
+                                    formControlName="username" 
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}</mat-label>
+                                <input matInput 
+                                    placeholder="{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}" 
+                                    name="roomname" 
+                                    formControlName="roomname" 
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAGES.HOME.FORM.NUMBER-OF-GUESTS' | translate }}</mat-label>
+                                <input matInput 
+                                    placeholder="{{ 'PAGES.HOME.FORM.NUMBER-OF-GUESTS' | translate }}" 
+                                    name="numberOfGuests" 
+                                    type="number" min="1" max="8" 
+                                    formControlName="numberOfGuests"
+                                    required>
+                            </mat-form-field>
+                        </mat-card-content>
+                        <mat-card-actions align="end">
+                            <button mat-button type="submit" color="primary">{{ 'PAGES.HOME.FORM.CREATE' | translate }}</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </form>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <form [formGroup]="enterRoomForm" (ngSubmit)="onEnter()">
+                    <mat-card>
+                        <mat-card-title>{{ 'PAGES.HOME.FORM.ENTER-ROOM' | translate }}</mat-card-title>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAGES.HOME.FORM.USERNAME' | translate }}</mat-label>
+                                <input matInput 
+                                    placeholder="{{ 'PAGES.HOME.FORM.USERNAME' | translate }}" 
+                                    name="username" 
+                                    formControlName="username" 
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}</mat-label>
+                                <input matInput 
+                                    placeholder="{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}" 
+                                    name="roomname" 
+                                    formControlName="roomname" 
+                                    required>
+                            </mat-form-field>
+                        </mat-card-content>
+                        <mat-card-actions align="end">
+                            <button mat-button type="submit" color="primary">{{ 'PAGES.HOME.FORM.ENTER' | translate }}</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </form>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

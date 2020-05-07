@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <span><a href="/">{{ 'APP.TITLE' | translate }}</a></span>
+    <span class="fill-space"></span>
+    <span class="select-language">
+        <a (click)="setLanguage('en')">English</a>
+        |
+        <a (click)="setLanguage('pt-BR')">Português</a></span>
+</mat-toolbar>
+<router-outlet></router-outlet>

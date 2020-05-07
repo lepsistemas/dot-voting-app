@@ -1,0 +1,19 @@
+{
+  "APP": {
+    "TITLE": "Dot Voting"
+  },
+  "PAGES": {
+      "HOME": {
+          "TITLE": "Home",
+          "FORM": {
+            "NEW-ROOM": "New room",
+            "ENTER-ROOM": "New room",
+            "USERNAME": "Username",
+            "ROOMNAME": "Room's name",
+            "NUMBER-OF-GUESTS": "Number of guests",
+            "CREATE": "Create",
+            "ENTER": "Enter"
+          }
+      }
+  }
+}
