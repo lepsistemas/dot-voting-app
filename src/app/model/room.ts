@@ -1,21 +1,13 @@
-import { IUser } from './user';
+import { User } from './user';
 
-export interface IRoom {
+export class Room {
     id: number;
     locked: boolean;
-    roomname: string;
+    name: string;
     numberOfGuests: number;
-    admin: IUser;
-}
-
-export class Room implements IRoom {
-    id: number;
-    locked: boolean;
-    roomname: string;
-    numberOfGuests: number;
-    admin: IUser;
+    admin: User;
     
-    public constructor(init?: Partial<IRoom>) {
+    public constructor(init?: Partial<any>) {
         Object.assign(this, init);
     }
 }

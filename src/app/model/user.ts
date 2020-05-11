@@ -1,15 +1,9 @@
-export interface IUser {
-    id: number;
-    username: string;
-    admin: boolean;
-}
-
-export class User implements IUser {
+export class User {
     id: number;
     username: string;
     admin: boolean;
     
-    public constructor(init?: Partial<IUser>) {
+    public constructor(init?: Partial<any>) {
         Object.assign(this, init);
     }
 }

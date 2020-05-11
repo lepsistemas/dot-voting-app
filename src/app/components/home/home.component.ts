@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
 import { Router } from '@angular/router';
 
-import { INewRoom, NewRoom } from '../model/new-room';
-import { NewRoomService } from '../service/new-room.service';
+import { Room } from '../../model/room';
+import { RoomService } from '../../service/room/room.service';
 
 @Component({
   selector: 'app-home',
@@ -15,14 +15,14 @@ export class HomeComponent implements OnInit {
   newRoomForm: FormGroup;
   enterRoomForm: FormGroup;
 
-  newRoom: INewRoom;
+  newRoom: Room;
 
-  constructor(private newRoomService: NewRoomService, private router: Router) { }
+  constructor(private roomService: RoomService, private router: Router) { }
 
   ngOnInit(): void {
     this.newRoomForm = new FormGroup({
       username: new FormControl('', Validators.required),
-      roomname: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
       numberOfGuests: new FormControl('', Validators.required)
     });
 
@@ -36,9 +36,14 @@ export class HomeComponent implements OnInit {
     if (this.newRoomForm.invalid) {
       return;
     }
-    this.newRoom = new NewRoom(this.newRoomForm.value);
-    this.newRoomService.create(this.newRoom);
-    this.router.navigate([`/rooms/${this.newRoom.roomname}`]);
+    this.newRoom = new Room(this.newRoomForm.value);
+    this.roomService.create(this.newRoom)
+    .subscribe(
+      (result) => {
+        console.log(result);
+        // this.router.navigate([`/rooms/${this.newRoom.roomname}`]);
+      }
+    );
   }
 
   onEnter(): void {
