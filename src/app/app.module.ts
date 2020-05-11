@@ -22,6 +22,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { HomeModule } from './components/home/home.module';
+import { RoomModule } from './components/room/room.module';
 
 import { AppComponent } from './app.component';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MaterialModule,
     SharedModule,
     HomeModule,
+    RoomModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

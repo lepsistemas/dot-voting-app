@@ -44,19 +44,27 @@
                         <mat-card-title>{{ 'PAGES.HOME.FORM.ENTER-ROOM' | translate }}</mat-card-title>
                         <mat-card-content>
                             <mat-form-field>
-                                <mat-label>{{ 'PAGES.HOME.FORM.USERNAME' | translate }}</mat-label>
+                                <mat-label>{{ 'PAGES.HOME.FORM.OWNER' | translate }}</mat-label>
                                 <input matInput 
-                                    placeholder="{{ 'PAGES.HOME.FORM.USERNAME' | translate }}" 
-                                    name="username" 
-                                    formControlName="username" 
+                                    placeholder="{{ 'PAGES.HOME.FORM.OWNER' | translate }}" 
+                                    name="owner" 
+                                    formControlName="owner" 
                                     required>
                             </mat-form-field>
                             <mat-form-field>
                                 <mat-label>{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}</mat-label>
                                 <input matInput 
                                     placeholder="{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}" 
-                                    name="roomname" 
-                                    formControlName="roomname" 
+                                    name="name" 
+                                    formControlName="name" 
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAGES.HOME.FORM.USERNAME' | translate }}</mat-label>
+                                <input matInput 
+                                    placeholder="{{ 'PAGES.HOME.FORM.USERNAME' | translate }}" 
+                                    name="username" 
+                                    formControlName="username" 
                                     required>
                             </mat-form-field>
                         </mat-card-content>

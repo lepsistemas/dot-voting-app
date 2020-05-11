@@ -8,12 +8,17 @@
           "FORM": {
             "NEW-ROOM": "Nova sala",
             "ENTER-ROOM": "Entrar na sala",
-            "USERNAME": "Nome de usuário",
+            "USERNAME": "Nome do seu usuário",
+            "OWNER": "Nome do dono da sala",
             "ROOMNAME": "Nome da sala",
             "NUMBER-OF-GUESTS": "Número de convidados",
             "CREATE": "Criar",
             "ENTER": "Entrar"
           }
+      },
+      "ROOM": {
+        "TITLE": "Sala",
+        "BY": "por"
       }
   }
 }

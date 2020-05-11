@@ -21,5 +21,13 @@ export class RoomService {
     };
     return this.http.post<Room>(BASE_URL + '/rooms', JSON.stringify(room), httpOptions);
   }
+
+  getByOwnerAndName(owner: string, name: string): Observable<Room> {
+    return this.http.get<Room>(BASE_URL + `/rooms?owner=${owner}&name=${name}`);
+  }
+
+  get(id: number): Observable<Room> {
+    return this.http.get<Room>(BASE_URL + `/rooms/${id}`);
+  }
   
 }

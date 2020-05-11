@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 import { Room } from '../../model/room';
 import { RoomService } from '../../service/room/room.service';
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   enterRoomForm: FormGroup;
 
   newRoom: Room;
+  enterRoom: Room;
 
   constructor(private roomService: RoomService, private router: Router) { }
 
@@ -28,7 +29,8 @@ export class HomeComponent implements OnInit {
 
     this.enterRoomForm = new FormGroup({
       username: new FormControl('', Validators.required),
-      roomname: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      owner: new FormControl('', Validators.required)
     });
   }
 
@@ -40,8 +42,11 @@ export class HomeComponent implements OnInit {
     this.roomService.create(this.newRoom)
     .subscribe(
       (result) => {
-        console.log(result);
-        // this.router.navigate([`/rooms/${this.newRoom.roomname}`]);
+        this.newRoom = result;
+        const navigationExtras: NavigationExtras = {
+          queryParams: { 'id': this.newRoom.id }
+        };
+        this.router.navigate(['/room'], navigationExtras);
       }
     );
   }
@@ -50,10 +55,16 @@ export class HomeComponent implements OnInit {
     if (this.enterRoomForm.invalid) {
       return;
     }
-  }
-
-  get formControls() {
-    return this.newRoomForm.controls;
+    this.roomService.getByOwnerAndName(this.enterRoomForm.value.owner, this.enterRoomForm.value.name)
+    .subscribe(
+      (result) => {
+        this.enterRoom = result;
+        const navigationExtras: NavigationExtras = {
+          queryParams: { 'id': this.enterRoom.id }
+        };
+        this.router.navigate(['/room'], navigationExtras);
+      }
+    );
   }
 
 }
