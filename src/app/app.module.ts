@@ -9,7 +9,11 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
+
 import { HttpErrorInterceptor } from './shared/http-error.interceptor';
+import { HttpLoaderInterceptor } from './shared/http-loader.interceptor';
+
+import { LoaderService } from './service/loader/loader.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -20,6 +24,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeModule } from './components/home/home.module';
 
 import { AppComponent } from './app.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -27,7 +32,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoaderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -45,10 +50,19 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       }
     })
   ],
+  exports: [
+    LoaderComponent
+  ],
   providers: [
+    LoaderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpLoaderInterceptor,
       multi: true
     }
   ],
