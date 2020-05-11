@@ -1,0 +1,1 @@
+export const BASE_URL: string = 'http://dot-voting-server.herokuapp.com/api/v1';
