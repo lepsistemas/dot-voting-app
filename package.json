@@ -1,5 +1,6 @@
 {
   "name": "dot-voting-app",
+  "productName": "Dot Voting",
   "version": "1.1.0",
   "description": "Dot Voting App for remote Agile cerimonies.",
   "homepage": "https://github.com/lepsistemas/dot-voting-app",
@@ -121,20 +122,22 @@
         "!tslint.json"
     ],
     "win": {
-      "icon": "dist/assets/icons",
+      "icon": "dist/assets/icons/favicon.icns",
       "target": [
         "portable"
       ]
     },
     "mac": {
-      "icon": "dist/assets/icons",
+      "icon": "dist/assets/icons/favicon.icns",
       "target": [
         "dmg"
       ]
     },
     "linux": {
-      "icon": "dist/assets/icons",
+      "icon": "dist/assets/icons/favicon.icns",
+      "executableName": "Dot Voting",
       "target": [
+        "AppImage",
         "deb"
       ]
     }
