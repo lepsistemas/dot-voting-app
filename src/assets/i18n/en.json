@@ -9,9 +9,8 @@
             "NEW-ROOM": "New room",
             "ENTER-ROOM": "New room",
             "USERNAME": "Username",
-            "OWNER": "Owner's username",
             "ROOMNAME": "Room's name",
-            "NUMBER-OF-GUESTS": "Number of guests",
+            "KEY": "Room's key",
             "CREATE": "Create",
             "ENTER": "Enter"
           }

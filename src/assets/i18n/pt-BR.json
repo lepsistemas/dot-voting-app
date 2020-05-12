@@ -9,9 +9,8 @@
             "NEW-ROOM": "Nova sala",
             "ENTER-ROOM": "Entrar na sala",
             "USERNAME": "Nome do seu usuário",
-            "OWNER": "Nome do dono da sala",
             "ROOMNAME": "Nome da sala",
-            "NUMBER-OF-GUESTS": "Número de convidados",
+            "KEY": "Chave da sala",
             "CREATE": "Criar",
             "ENTER": "Entrar"
           }
