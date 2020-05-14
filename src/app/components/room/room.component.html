@@ -1,4 +1,23 @@
+<mat-toolbar>
+    <span>
+        {{ 'PAGES.ROOM.TITLE' | translate }} <strong>{{ room$?.name }}</strong> {{ 'PAGES.ROOM.BY' | translate }} <strong>{{ room$?.owner.username }}</strong>.
+    </span>
+    <span class="fill-space"></span>
+    <span>
+        <button *ngIf="isAdmin() && !isLocked()" (click)="lock()" mat-icon-button color="secondary">
+            <mat-icon>lock_open</mat-icon>
+        </button>
+        <button *ngIf="isAdmin() && isLocked()" (click)="unlock()" mat-icon-button color="secondary">
+            <mat-icon>lock</mat-icon>
+        </button>
+    </span>
+    <span>&nbsp;</span>
+    <span>
+        <button (click)="exit()" mat-icon-button color="secondary">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </span>
+</mat-toolbar>
 <div class="container">
-    {{ 'PAGES.ROOM.TITLE' | translate }} <strong>{{ room$?.name }}</strong> {{ 'PAGES.ROOM.BY' | translate }} <strong>{{ room$?.owner.username }}</strong>.
-    <br/><br/>
+    <app-admin-room *ngIf="isAdmin()" [room]="room$" [admin]="user$"></app-admin-room>
 </div>

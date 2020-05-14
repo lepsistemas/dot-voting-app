@@ -22,15 +22,6 @@
                                     formControlName="name" 
                                     required>
                             </mat-form-field>
-                            <mat-form-field>
-                                <mat-label>{{ 'PAGES.HOME.FORM.NUMBER-OF-GUESTS' | translate }}</mat-label>
-                                <input matInput 
-                                    placeholder="{{ 'PAGES.HOME.FORM.NUMBER-OF-GUESTS' | translate }}" 
-                                    name="numberOfGuests" 
-                                    type="number" min="1" max="8" 
-                                    formControlName="numberOfGuests"
-                                    required>
-                            </mat-form-field>
                         </mat-card-content>
                         <mat-card-actions align="end">
                             <button mat-button type="submit" color="primary">{{ 'PAGES.HOME.FORM.CREATE' | translate }}</button>
@@ -44,19 +35,20 @@
                         <mat-card-title>{{ 'PAGES.HOME.FORM.ENTER-ROOM' | translate }}</mat-card-title>
                         <mat-card-content>
                             <mat-form-field>
-                                <mat-label>{{ 'PAGES.HOME.FORM.OWNER' | translate }}</mat-label>
-                                <input matInput 
-                                    placeholder="{{ 'PAGES.HOME.FORM.OWNER' | translate }}" 
-                                    name="owner" 
-                                    formControlName="owner" 
-                                    required>
-                            </mat-form-field>
-                            <mat-form-field>
                                 <mat-label>{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}</mat-label>
                                 <input matInput 
                                     placeholder="{{ 'PAGES.HOME.FORM.ROOMNAME' | translate }}" 
                                     name="name" 
                                     formControlName="name" 
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAGES.HOME.FORM.KEY' | translate }}</mat-label>
+                                <input matInput 
+                                    type="password"
+                                    placeholder="{{ 'PAGES.HOME.FORM.KEY' | translate }}" 
+                                    name="key" 
+                                    formControlName="key" 
                                     required>
                             </mat-form-field>
                             <mat-form-field>

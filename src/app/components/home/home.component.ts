@@ -15,22 +15,18 @@ export class HomeComponent implements OnInit {
   newRoomForm: FormGroup;
   enterRoomForm: FormGroup;
 
-  newRoom: Room;
-  enterRoom: Room;
-
   constructor(private roomService: RoomService, private router: Router) { }
 
   ngOnInit(): void {
     this.newRoomForm = new FormGroup({
       username: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      numberOfGuests: new FormControl('', Validators.required)
+      name: new FormControl('', Validators.required)
     });
 
     this.enterRoomForm = new FormGroup({
       username: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
-      owner: new FormControl('', Validators.required)
+      key: new FormControl('', Validators.required)
     });
   }
 
@@ -38,13 +34,14 @@ export class HomeComponent implements OnInit {
     if (this.newRoomForm.invalid) {
       return;
     }
-    this.newRoom = new Room(this.newRoomForm.value);
-    this.roomService.create(this.newRoom)
+    this.roomService.create(this.newRoomForm.value)
     .subscribe(
       (result) => {
-        this.newRoom = result;
         const navigationExtras: NavigationExtras = {
-          queryParams: { 'id': this.newRoom.id }
+          queryParams: {
+            id: result.id,
+            userId: result.owner.id
+          }
         };
         this.router.navigate(['/room'], navigationExtras);
       }
@@ -55,16 +52,18 @@ export class HomeComponent implements OnInit {
     if (this.enterRoomForm.invalid) {
       return;
     }
-    this.roomService.getByOwnerAndName(this.enterRoomForm.value.owner, this.enterRoomForm.value.name)
-    .subscribe(
-      (result) => {
-        this.enterRoom = result;
-        const navigationExtras: NavigationExtras = {
-          queryParams: { 'id': this.enterRoom.id }
-        };
-        this.router.navigate(['/room'], navigationExtras);
-      }
-    );
+      this.roomService.enter(this.enterRoomForm.value)
+      .subscribe(
+        result => {
+          const navigationExtras: NavigationExtras = {
+            queryParams: {
+              id: result.id,
+              userId: result.guest.id
+            }
+          };
+          this.router.navigate(['/room'], navigationExtras);
+        }
+      );
   }
 
 }
