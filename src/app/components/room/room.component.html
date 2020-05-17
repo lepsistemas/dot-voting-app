@@ -19,5 +19,12 @@
     </span>
 </mat-toolbar>
 <div class="container">
-    <app-admin-room *ngIf="isAdmin()" [room]="room$" [admin]="user$"></app-admin-room>
+    <div class="room">
+        <div class="main">
+            <app-admin-room *ngIf="isAdmin()" [(room)]="room$" [admin]="user$"></app-admin-room>
+        </div>
+        <div class="users">
+            <app-online-users [(room)]="room$" [me]="user$"></app-online-users>
+        </div>
+    </div>
 </div>

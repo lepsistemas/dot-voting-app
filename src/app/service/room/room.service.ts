@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Room } from '../../model/room';
 import { RoomEntrance } from '../../model/room-entrance';
+import { RoomExit } from '../../model/room-exit';
 
 import  { BASE_URL } from '../../shared/constants';
 
@@ -12,7 +13,11 @@ import  { BASE_URL } from '../../shared/constants';
 })
 export class RoomService {
   
-  constructor(private http: HttpClient) { }
+  private endpoint: string;
+  
+  constructor(private http: HttpClient) {
+    this.endpoint = `${BASE_URL}/api/v1`;
+  }
 
   public create(room: Room): Observable<Room> {
     const httpOptions = {
@@ -20,11 +25,11 @@ export class RoomService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Room>(`${BASE_URL}/rooms`, JSON.stringify(room), httpOptions);
+    return this.http.post<Room>(`${this.endpoint}/rooms`, JSON.stringify(room), httpOptions);
   }
 
   get(id: number): Observable<Room> {
-    return this.http.get<Room>(`${BASE_URL}/rooms/${id}`);
+    return this.http.get<Room>(`${this.endpoint}/rooms/${id}`);
   }
 
   enter(entrance: RoomEntrance): Observable<any> {
@@ -38,11 +43,24 @@ export class RoomService {
       key: entrance.key,
       username: entrance.username
     });
-    return this.http.post<any>(`${BASE_URL}/rooms-entrance`, request, httpOptions);
+    return this.http.post<any>(`${this.endpoint}/rooms-entrance`, request, httpOptions);
+  }
+
+  leave(exit: RoomExit) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    const request: string = JSON.stringify({
+      id: exit.id,
+      userId: exit.userId
+    });
+    return this.http.post<any>(`${this.endpoint}/rooms-exit`, request, httpOptions);
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${BASE_URL}/rooms/${id}`);
+    return this.http.delete<any>(`${this.endpoint}/rooms/${id}`);
   }
 
   lock(id: number): Observable<Room> {
@@ -54,14 +72,14 @@ export class RoomService {
     const request: string = JSON.stringify({
       lock: Boolean(true)
     });
-    return this.http.post<Room>(`${BASE_URL}/rooms/${id}/locker`, request, httpOptions);
+    return this.http.post<Room>(`${this.endpoint}/rooms/${id}/locker`, request, httpOptions);
   }
 
   unlock(id: number): Observable<Room> {
     const request: string = JSON.stringify({
       lock: Boolean(false)
     });
-    return this.http.post<Room>(`${BASE_URL}/rooms/${id}/locker`, request);
+    return this.http.post<Room>(`${this.endpoint}/rooms/${id}/locker`, request);
   }
   
 }

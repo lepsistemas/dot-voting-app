@@ -10,11 +10,15 @@ import  { BASE_URL } from '../../shared/constants';
   providedIn: 'root'
 })
 export class UserService {
+
+  private endpoint: string;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.endpoint = `${BASE_URL}/api/v1`
+  }
 
   get(id: number): Observable<User> {
-    return this.http.get<User>(`${BASE_URL}/users/${id}`);
+    return this.http.get<User>(`${this.endpoint}/users/${id}`);
   }
   
 }

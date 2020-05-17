@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 
-import { Room } from '../../model/room';
 import { RoomService } from '../../service/room/room.service';
 
 @Component({
@@ -39,7 +38,7 @@ export class HomeComponent implements OnInit {
       (result) => {
         const navigationExtras: NavigationExtras = {
           queryParams: {
-            id: result.id,
+            roomId: result.id,
             userId: result.owner.id
           }
         };
@@ -57,8 +56,8 @@ export class HomeComponent implements OnInit {
         result => {
           const navigationExtras: NavigationExtras = {
             queryParams: {
-              id: result.id,
-              userId: result.guest.id
+              roomId: result.room.id,
+              userId: result.user.id
             }
           };
           this.router.navigate(['/room'], navigationExtras);

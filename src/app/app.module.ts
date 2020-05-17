@@ -24,8 +24,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeModule } from './components/home/home.module';
 import { RoomModule } from './components/room/room.module';
 
+import { SocketIoModule } from 'ngx-socket-io';
+
 import { AppComponent } from './app.component';
 import { LoaderComponent } from './components/loader/loader.component';
+
+import { BASE_URL } from './shared/constants';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -37,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    SocketIoModule.forRoot({url: BASE_URL, options: {}}),
     HttpClientModule,
     CoreModule,
     MaterialModule,
