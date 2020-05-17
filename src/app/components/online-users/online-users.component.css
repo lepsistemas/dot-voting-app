@@ -1,3 +1,7 @@
 * {
     background: white;
 }
+
+.mat-badge-content {
+    border-radius: 0;
+  }

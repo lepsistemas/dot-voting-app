@@ -17,6 +17,8 @@ import { LoaderService } from './service/loader/loader.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -43,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     BrowserAnimationsModule,
     SocketIoModule.forRoot({url: BASE_URL, options: {}}),
     HttpClientModule,
+    FlexLayoutModule,
     CoreModule,
     MaterialModule,
     SharedModule,

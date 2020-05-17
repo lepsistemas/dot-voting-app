@@ -1,1 +1,124 @@
-Compartilhe a chave da sala com seus amigos: {{ room.key }}
+<div class="room-configuration">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ 'PAGES.ROOM.CONFIGURATION.TITLE' | translate }}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+            <mat-label>{{ 'PAGES.ROOM.CONFIGURATION.KEY' | translate }}</mat-label>
+            <input matInput readonly value="{{ room.key }}">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>{{ 'PAGES.ROOM.CONFIGURATION.MAX-VOTES' | translate }}</mat-label>
+            <input matInput type="number" min="1">
+        </mat-form-field>
+    </mat-expansion-panel>
+</div>
+
+<div class="cards">
+    <div class="cardItem">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ 'PAGES.ROOM.FORM.NEW-CARD' | translate }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field floatLabel="never">
+                <input matInput placeholder="{{ 'PAGES.ROOM.FORM.TITLE' | translate }}"  required>
+            </mat-form-field>
+            <br/>
+            <mat-form-field floatLabel="never">
+                <input matInput placeholder="{{ 'PAGES.ROOM.FORM.DESCRIPTION' | translate }}" required>
+            </mat-form-field>
+            <mat-action-row>
+                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.CREATE' | translate }}</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </div>
+    <div class="cardItem">
+        <mat-card>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>
+                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
+            </mat-card-subtitle>
+            <mat-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button type="submit" color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="cardItem">
+        <mat-card>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>
+                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
+            </mat-card-subtitle>
+            <mat-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="cardItem">
+        <mat-card>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>
+                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
+            </mat-card-subtitle>
+            <mat-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="cardItem">
+        <mat-card>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>
+                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
+            </mat-card-subtitle>
+            <mat-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="cardItem">
+        <mat-card>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>
+                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
+            </mat-card-subtitle>
+            <mat-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="cardItem">
+        <mat-card>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>
+                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
+            </mat-card-subtitle>
+            <mat-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

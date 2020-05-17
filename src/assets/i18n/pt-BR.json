@@ -17,7 +17,20 @@
       },
       "ROOM": {
         "TITLE": "Sala",
-        "BY": "por"
+        "BY": "por",
+        "CONFIGURATION": {
+          "TITLE": "Configuração da sala",
+          "KEY": "Chave da sala",
+          "MAX-VOTES": "Número máximo de votos por cartão"
+        },
+        "FORM": {
+          "MAX-VOTES": "Quantidade de votos",
+          "NEW-CARD": "Novo cartão",
+          "TITLE": "Título",
+          "DESCRIPTION": "Descrição",
+          "CREATE": "Criar",
+          "VOTE": "Votar"
+        }
       }
   }
 }

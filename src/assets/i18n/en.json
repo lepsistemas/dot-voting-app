@@ -17,7 +17,20 @@
       },
       "ROOM": {
         "TITLE": "Room",
-        "BY": "by"
+        "BY": "by",
+        "CONFIGURATION": {
+          "TITLE": "Room's configuration",
+          "KEY": "Room's key",
+          "MAX-VOTES": "Max votes per card"
+        },
+        "FORM": {
+          "MAX-VOTES": "Max votes",
+          "NEW-CARD": "New card",
+          "TITLE": "Title",
+          "DESCRIPTION": "Description",
+          "CREATE": "Create",
+          "VOTE": "Vote"
+        }
       }
   }
 }

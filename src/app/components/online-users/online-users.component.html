@@ -1,11 +1,17 @@
-<mat-list role="list">
-    <h1 mat-subheader>Users {{ (room?.guests.length + 1) }}</h1>
-    <mat-list-item>
-        <h1 mat-line>{{ room?.owner.username }}</h1>
-        <mat-divider [inset]="true"></mat-divider>
-    </mat-list-item>
-    <mat-list-item *ngFor="let guest of room?.guests; last as last">
-        <h1 mat-line>{{ guest.username }}</h1>
-        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-    </mat-list-item>
-  </mat-list>
+<mat-card>
+    <mat-card-title>
+        <span matBadge="{{ (room?.guests.length + 1) }}" matBadgeOverlap="false" matBadgeColor="accent">Online</span>
+    </mat-card-title>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item>
+                <h1 mat-line>{{ room?.owner.username }}</h1>
+                <mat-divider *ngIf="room?.guests.length > 0" [inset]="true"></mat-divider>
+            </mat-list-item>
+            <mat-list-item *ngFor="let guest of room?.guests; last as last">
+                <h1 mat-line>{{ guest.username }}</h1>
+                <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+          </mat-list>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,32 @@
+.mat-form-field {
+    width: 100%;
+}
+
+.room-configuration {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.cards > * {
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+.cards > *:not(:last-child) {
+    margin-right: 15px;
+}
+
+.cardItem {
+    flex: 0 1 calc(33.3% - 15px);
+}
+
+.mat-card-content {
+    height: 103px;
+    overflow-y: auto;
+}
