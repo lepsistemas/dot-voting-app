@@ -21,7 +21,7 @@
         "CONFIGURATION": {
           "TITLE": "Room's configuration",
           "KEY": "Room's key",
-          "MAX-VOTES": "Max votes per card"
+          "MAX-VOTES": "Max votes each guest has"
         },
         "FORM": {
           "MAX-VOTES": "Max votes",

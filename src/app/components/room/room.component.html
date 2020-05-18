@@ -21,10 +21,10 @@
 <div class="container">
     <div class="room">
         <div class="main">
-            <app-admin-room *ngIf="isAdmin()" [(room)]="room$" [admin]="user$"></app-admin-room>
+            <app-main-room [(room)]="room$" [(me)]="user$"></app-main-room>
         </div>
         <div class="users">
-            <app-online-users [(room)]="room$" [me]="user$"></app-online-users>
+            <app-online-users [(room)]="room$" [(me)]="user$"></app-online-users>
         </div>
     </div>
 </div>
