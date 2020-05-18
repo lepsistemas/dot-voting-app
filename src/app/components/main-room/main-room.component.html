@@ -1,4 +1,4 @@
-<div class="room-configuration" *ngIf="isAdmin()">
+<div class="room-configuration" *ngIf="admin">
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -18,106 +18,49 @@
 </div>
 
 <div class="cards">
-    <div class="cardItem" *ngIf="isAdmin()">
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    {{ 'PAGES.ROOM.FORM.NEW-CARD' | translate }}
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-form-field floatLabel="never">
-                <input matInput placeholder="{{ 'PAGES.ROOM.FORM.TITLE' | translate }}"  required>
-            </mat-form-field>
-            <br/>
-            <mat-form-field floatLabel="never">
-                <input matInput placeholder="{{ 'PAGES.ROOM.FORM.DESCRIPTION' | translate }}" required>
-            </mat-form-field>
-            <mat-action-row>
-                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.CREATE' | translate }}</button>
-            </mat-action-row>
-        </mat-expansion-panel>
+    <div class="cardItem" *ngIf="admin">
+        <form [formGroup]="newCardForm" (ngSubmit)="onCreate()">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ 'PAGES.ROOM.FORM.NEW-CARD' | translate }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field floatLabel="never">
+                    <input matInput 
+                        placeholder="{{ 'PAGES.ROOM.FORM.TITLE' | translate }}" 
+                        name="title" 
+                        formControlName="title" 
+                        required>
+                </mat-form-field>
+                <br/>
+                <mat-form-field floatLabel="never">
+                    <input matInput 
+                        placeholder="{{ 'PAGES.ROOM.FORM.DESCRIPTION' | translate }}" 
+                        name="description" 
+                        formControlName="description" 
+                        required>
+                </mat-form-field>
+                <mat-action-row>
+                    <button mat-button type="submit" color="primary">{{ 'PAGES.ROOM.FORM.CREATE' | translate }}</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </form>
     </div>
-    <div class="cardItem">
+    <div class="cardItem" *ngFor="let card of cards">
         <mat-card>
-            <mat-card-title>Title</mat-card-title>
+            <mat-card-title>{{ (card.title.length > 38) ? (card.title | slice:0:38) + '...' : (card.title) }}</mat-card-title>
             <mat-card-subtitle>
-                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
+                <div *ngFor="let i of Arr(card?.votes).fill(1)"><mat-icon color="warn">favorite</mat-icon></div>
+                <div *ngIf="card?.votes === 0" style="height: 2em;">&nbsp;</div>
             </mat-card-subtitle>
             <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <strong>{{ card.title }}</strong>
+                <br/><br/>
+                {{ card.description }}
             </mat-card-content>
             <mat-card-actions align="end">
-                <button mat-button type="submit" color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="cardItem">
-        <mat-card>
-            <mat-card-title>Title</mat-card-title>
-            <mat-card-subtitle>
-                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
-            </mat-card-subtitle>
-            <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </mat-card-content>
-            <mat-card-actions align="end">
-                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="cardItem">
-        <mat-card>
-            <mat-card-title>Title</mat-card-title>
-            <mat-card-subtitle>
-                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
-            </mat-card-subtitle>
-            <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </mat-card-content>
-            <mat-card-actions align="end">
-                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="cardItem">
-        <mat-card>
-            <mat-card-title>Title</mat-card-title>
-            <mat-card-subtitle>
-                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
-            </mat-card-subtitle>
-            <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </mat-card-content>
-            <mat-card-actions align="end">
-                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="cardItem">
-        <mat-card>
-            <mat-card-title>Title</mat-card-title>
-            <mat-card-subtitle>
-                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
-            </mat-card-subtitle>
-            <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </mat-card-content>
-            <mat-card-actions align="end">
-                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="cardItem">
-        <mat-card>
-            <mat-card-title>Title</mat-card-title>
-            <mat-card-subtitle>
-                <mat-icon color="warn">favorite</mat-icon><mat-icon color="warn">favorite</mat-icon>
-            </mat-card-subtitle>
-            <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </mat-card-content>
-            <mat-card-actions align="end">
-                <button mat-button color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
+                <button mat-button (click)="onVote(card.id)" color="primary">{{ 'PAGES.ROOM.FORM.VOTE' | translate }}</button>
             </mat-card-actions>
         </mat-card>
     </div>

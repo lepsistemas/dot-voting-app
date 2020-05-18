@@ -1,4 +1,5 @@
 import { User } from './user';
+import { Card } from './card';
 
 export class Room {
     id: number;
@@ -8,6 +9,7 @@ export class Room {
     owner: User;
     locked: boolean;
     guests?: User[];
+    cards?: Card[];
     
     public constructor(init?: Partial<any>) {
         Object.assign(this, init);

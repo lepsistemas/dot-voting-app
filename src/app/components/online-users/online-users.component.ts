@@ -10,7 +10,6 @@ import { RoomService } from '../../service/room/room.service';
 })
 export class OnlineUsersComponent implements OnInit {
 
-  @Input() me: User;
   @Input() room: Room;
   @Output() roomChange = new EventEmitter<Room>();
 

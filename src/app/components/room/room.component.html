@@ -21,10 +21,10 @@
 <div class="container">
     <div class="room">
         <div class="main">
-            <app-main-room [(room)]="room$" [(me)]="user$"></app-main-room>
+            <app-main-room [(room)]="room$" [(me)]="user$" [(cards)]="cards$" [admin]="isAdmin()"></app-main-room>
         </div>
         <div class="users">
-            <app-online-users [(room)]="room$" [(me)]="user$"></app-online-users>
+            <app-online-users [(room)]="room$"></app-online-users>
         </div>
     </div>
 </div>

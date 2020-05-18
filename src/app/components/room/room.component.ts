@@ -1,9 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Room } from '../../model/room';
+
 import { RoomService } from '../../service/room/room.service';
 import { UserService } from '../../service/user/user.service';
+import { CardService } from '../../service/card/card.service';
+
+import { Room } from '../../model/room';
 import { User } from '../../model/user';
+import { Card } from '../../model/card';
 import { Socket } from 'ngx-socket-io';
 import { RoomExit } from '../../model/room-exit';
 
@@ -16,10 +20,11 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   room$: Room;
   user$: User;
+  cards$: Card[];
   
   left: boolean;
 
-  constructor(private socket: Socket, private router: Router, private route: ActivatedRoute, private roomService: RoomService, private userService: UserService) {}
+  constructor(private socket: Socket, private router: Router, private route: ActivatedRoute, private roomService: RoomService, private userService: UserService, private cardService: CardService) {}
   
   ngOnInit(): void {
     this.socket.connect();
@@ -30,8 +35,13 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.roomService.get(id)
       .subscribe(result => {
         this.room$ = result;
+        this.cardService.fromRoom(this.room$.id)
+        .subscribe(result => {
+          this.cards$ = result;
+        });
         this.roomEntranceListener();
         this.roomDeletingListener();
+        this.cardsChangedListener();
       });
 
       const userId = parseInt(params.get('userId'));
@@ -43,7 +53,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   }
 
   private roomEntranceListener(): void {
-    this.socket.on(`ROOM:${this.room$.id}_ROOM-CHANGED`, (msg) => {
+    this.socket.on(`ROOM:${this.room$.id}_ROOM-CHANGED`, () => {
       this.roomService.get(this.room$.id)
       .subscribe(result => {
         this.room$ = result;
@@ -59,6 +69,15 @@ export class RoomComponent implements OnInit, OnDestroy {
       }
       this.socket.disconnect();
       this.exit();
+    });
+  }
+
+  private cardsChangedListener(): void {
+    this.socket.on(`ROOM:${this.room$.id}_CARDS-CHANGED`, () => {
+      this.cardService.fromRoom(this.room$.id)
+      .subscribe(result => {
+        this.cards$ = result;
+      });
     });
   }
 
