@@ -70,16 +70,21 @@ export class RoomService {
       })
     };
     const request: string = JSON.stringify({
-      lock: Boolean(true)
+      lock: true
     });
     return this.http.post<Room>(`${this.endpoint}/rooms/${id}/locker`, request, httpOptions);
   }
 
   unlock(id: number): Observable<Room> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
     const request: string = JSON.stringify({
-      lock: Boolean(false)
+      lock: false
     });
-    return this.http.post<Room>(`${this.endpoint}/rooms/${id}/locker`, request);
+    return this.http.post<Room>(`${this.endpoint}/rooms/${id}/locker`, request, httpOptions);
   }
   
 }
