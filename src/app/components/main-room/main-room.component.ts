@@ -1,9 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { CardService } from '../../service/card/card.service';
+import { RoomService } from '../../service/room/room.service';
+
 import { User } from '../../model/user';
 import { Room } from '../../model/room';
 import { Card } from '../../model/card';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main-room',
@@ -23,7 +26,7 @@ export class MainRoomComponent implements OnInit {
 
   Arr = Array;
 
-  constructor(private cardService: CardService) { }
+  constructor(private cardService: CardService, private roomService: RoomService) { }
 
   ngOnInit(): void {
     this.newCardForm = new FormGroup({
@@ -57,6 +60,20 @@ export class MainRoomComponent implements OnInit {
         this.updateCards();
       }
     );
+  }
+
+  onNumberOfVotesChanges(numberOfVotes: number): void {
+    this.roomService.updateNumberOfVotes(this.room.id, numberOfVotes)
+    .subscribe((result) => {
+      this.room = result;
+    });
+  }
+
+  onToggleMultipleVotesPerCard(allowMultipleVotesPerCard: boolean): void {
+    this.roomService.updateMultipleVotesPerCard(this.room.id, allowMultipleVotesPerCard)
+    .subscribe((result) => {
+      this.room = result;
+    });
   }
 
   onVote(cardId: number) {

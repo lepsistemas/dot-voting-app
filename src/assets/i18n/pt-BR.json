@@ -21,10 +21,9 @@
         "CONFIGURATION": {
           "TITLE": "Configuração da sala",
           "KEY": "Chave da sala",
-          "MAX-VOTES": "Número máximo de votos que o convidado tem"
+          "NUM-VOTES": "Número de votos que cada convidado tem"
         },
         "FORM": {
-          "MAX-VOTES": "Quantidade de votos",
           "NEW-CARD": "Novo cartão",
           "TITLE": "Título",
           "DESCRIPTION": "Descrição",

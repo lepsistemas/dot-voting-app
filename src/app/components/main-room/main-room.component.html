@@ -7,13 +7,15 @@
         </mat-expansion-panel-header>
         <mat-form-field>
             <mat-label>{{ 'PAGES.ROOM.CONFIGURATION.KEY' | translate }}</mat-label>
-            <input matInput readonly value="{{ room.key }}">
+            <input matInput readonly value="{{ room?.key }}">
         </mat-form-field>
         <br/>
         <mat-form-field>
-            <mat-label>{{ 'PAGES.ROOM.CONFIGURATION.MAX-VOTES' | translate }}</mat-label>
-            <input matInput type="number" min="1">
+            <mat-label>{{ 'PAGES.ROOM.CONFIGURATION.NUM-VOTES' | translate }}</mat-label>
+            <input matInput type="number" min="0" value="{{ room?.numberOfVotes }}" (change)="onNumberOfVotesChanges($event.target.value)">
         </mat-form-field>
+        <br/>
+        <mat-slide-toggle [checked]="room?.allowMultipleVotesPerCard" (change)="onToggleMultipleVotesPerCard($event.checked)">{{ 'PAGES.ROOM.CONFIGURATION.NUM-VOTES' | translate }}</mat-slide-toggle>
     </mat-expansion-panel>
 </div>
 

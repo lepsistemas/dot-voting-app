@@ -86,5 +86,29 @@ export class RoomService {
     });
     return this.http.post<Room>(`${this.endpoint}/rooms/${id}/locker`, request, httpOptions);
   }
+
+  updateNumberOfVotes(id: number, numberOfVotes: number): Observable<Room> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    const request: string = JSON.stringify({
+      numberOfVotes: numberOfVotes
+    });
+    return this.http.patch<Room>(`${this.endpoint}/rooms/${id}`, request, httpOptions);
+  }
+
+  updateMultipleVotesPerCard(id: number, allowMultipleVotesPerCard: boolean): Observable<Room> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    const request: string = JSON.stringify({
+      allowMultipleVotesPerCard: allowMultipleVotesPerCard
+    });
+    return this.http.patch<Room>(`${this.endpoint}/rooms/${id}`, request, httpOptions);
+  }
   
 }
