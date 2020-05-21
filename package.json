@@ -124,9 +124,9 @@
       "!tslint.json"
     ],
     "win": {
-      "icon": "dist/assets/icons/favicon.icns",
+      "icon": "dist/assets/icons",
       "target": [
-        "portable"
+        "msi"
       ]
     },
     "mac": {
@@ -139,7 +139,7 @@
       "icon": "dist/assets/icons/favicon.icns",
       "executableName": "Dot Voting",
       "target": [
-        "AppImage"
+        "deb"
       ]
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { RoomService } from '../../service/room/room.service';
@@ -21,6 +21,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   room$: Room;
   user$: User;
   cards$: Card[];
+  votesGiven: number = 0;
   
   left: boolean;
 
@@ -92,6 +93,10 @@ export class RoomComponent implements OnInit, OnDestroy {
         this.socket.disconnect();
       });
     }
+  }
+
+  lep(votesGiven: number) {
+    this.votesGiven = votesGiven;
   }
 
   isAdmin(): boolean {

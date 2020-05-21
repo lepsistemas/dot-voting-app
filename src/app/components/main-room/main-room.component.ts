@@ -22,11 +22,12 @@ export class MainRoomComponent implements OnInit {
   @Input() admin: boolean;
 
   @Input() cards: Card[];
-  @Output() cardsChange = new EventEmitter<Card[]>();
+  @Output() cardsChange: EventEmitter<Card[]> = new EventEmitter<Card[]>();
+
+  votesGiven: number = 0;
+  @Output() onVoteGiven: EventEmitter<number> = new EventEmitter<number>();
 
   newCardForm: FormGroup;
-
-  Arr = Array;
 
   constructor(private cardService: CardService, private roomService: RoomService, private voteService: VoteService) { }
 
@@ -40,15 +41,19 @@ export class MainRoomComponent implements OnInit {
     this.updateCards();
   }
 
-  private updateCards() {
+  ngOnChanges(): void {
+    this.cards = this.room?.showResults 
+                  ? this.cards.sort((previous, current) => previous.votes < current.votes ? 1 : -1) 
+                  : this.cards;
+    this.cardsChange.emit(this.cards);
+  }
+
+  private updateCards(): void {
     if (this.room) {
       this.cardService.fromRoom(this.room.id)
         .subscribe(result => {
-          const cards: Card[] = this.room.showResults 
-                                ? result.sort((previous, current) => previous.votes < current.votes ? 1 : -1) 
-                                : result;
-          this.cards = cards;
-          this.cardsChange.emit(cards);
+          this.cards = result;
+          this.cardsChange.emit(result);
         })
     }
   }
@@ -96,6 +101,8 @@ export class MainRoomComponent implements OnInit {
     }
     this.voteService.give(vote)
     .subscribe(() => {
+      this.votesGiven++;
+      this.onVoteGiven.emit(this.votesGiven);
       this.updateCards();
     });
   }

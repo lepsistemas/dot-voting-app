@@ -18,6 +18,7 @@
       "ROOM": {
         "TITLE": "Room",
         "BY": "by",
+        "VOTES-LEFT": "votes left",
         "CONFIGURATION": {
           "TITLE": "Room's configuration",
           "KEY": "Room's key",

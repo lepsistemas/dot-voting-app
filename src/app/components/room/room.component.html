@@ -21,10 +21,26 @@
 <div class="container">
     <div class="room">
         <div class="main">
-            <app-main-room [(room)]="room$" [(me)]="user$" [(cards)]="cards$" [admin]="isAdmin()"></app-main-room>
+            <app-main-room (onVoteGiven)="lep($event)" [(room)]="room$" [(me)]="user$" [(cards)]="cards$" [admin]="isAdmin()"></app-main-room>
         </div>
         <div class="users">
-            <app-online-users [(room)]="room$"></app-online-users>
+            <mat-card>
+                <mat-card-title>
+                    <span matBadge="{{ (room$?.guests.length + 1) }}" matBadgeOverlap="false" matBadgeColor="accent">Online</span>
+                </mat-card-title>
+                <mat-card-content>
+                    <mat-list role="list">
+                        <mat-list-item>
+                            <h1 mat-line>{{ room$?.owner.username }} <span *ngIf="isAdmin() && (room$?.numberOfVotes - votesGiven) !== 0" class="votes-left">({{ (room$?.numberOfVotes - votesGiven) }} {{ 'PAGES.ROOM.VOTES-LEFT' | translate }})</span></h1>
+                            <mat-divider *ngIf="room$?.guests.length > 0" [inset]="true"></mat-divider>
+                        </mat-list-item>
+                        <mat-list-item *ngFor="let guest of room$?.guests; last as last">
+                            <h1 mat-line>{{ guest.username }} <span *ngIf="(user$?.id === guest.id) && (room$?.numberOfVotes - votesGiven) !== 0" class="votes-left">({{ (room$?.numberOfVotes - votesGiven) }} {{ 'PAGES.ROOM.VOTES-LEFT' | translate }})</span></h1>
+                            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+                        </mat-list-item>
+                      </mat-list>
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>
 </div>

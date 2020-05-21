@@ -18,6 +18,7 @@
       "ROOM": {
         "TITLE": "Sala",
         "BY": "por",
+        "VOTES-LEFT": "votos restantes",
         "CONFIGURATION": {
           "TITLE": "Configuração da sala",
           "KEY": "Chave da sala",

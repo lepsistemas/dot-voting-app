@@ -17,6 +17,11 @@
     z-index: 100;
 }
 
+.votes-left {
+    font-size: 10px;
+    color: gray;
+}
+
 .room {
     display: flex;
 }

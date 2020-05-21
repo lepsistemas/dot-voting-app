@@ -11,6 +11,7 @@ export class Room {
     locked: boolean;
     guests?: User[];
     cards?: Card[];
+    numberOfVotes: number;
     allowMultipleVotesPerCard: boolean;
     showResults: boolean;
     
