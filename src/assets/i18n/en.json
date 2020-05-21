@@ -21,7 +21,9 @@
         "CONFIGURATION": {
           "TITLE": "Room's configuration",
           "KEY": "Room's key",
-          "NUM-VOTES": "Number of votes each guest has"
+          "NUM-VOTES": "Number of votes each guest has",
+          "MULTIPLE-VOTES-PER-CARD": "Allow multiple votes per card",
+          "SHOW-RESULTS": "Show results"
         },
         "FORM": {
           "NEW-CARD": "New card",

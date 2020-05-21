@@ -110,5 +110,17 @@ export class RoomService {
     });
     return this.http.patch<Room>(`${this.endpoint}/rooms/${id}`, request, httpOptions);
   }
+
+  updateShowResults(id: number, showResults: boolean): Observable<Room> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    const request: string = JSON.stringify({
+      showResults: showResults
+    });
+    return this.http.patch<Room>(`${this.endpoint}/rooms/${id}`, request, httpOptions);
+  }
   
 }

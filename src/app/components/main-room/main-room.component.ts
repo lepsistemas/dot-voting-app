@@ -44,8 +44,11 @@ export class MainRoomComponent implements OnInit {
     if (this.room) {
       this.cardService.fromRoom(this.room.id)
         .subscribe(result => {
-          this.cards = result;
-          this.cardsChange.emit(result);
+          const cards: Card[] = this.room.showResults 
+                                ? result.sort((previous, current) => previous.votes < current.votes ? 1 : -1) 
+                                : result;
+          this.cards = cards;
+          this.cardsChange.emit(cards);
         })
     }
   }
@@ -75,6 +78,14 @@ export class MainRoomComponent implements OnInit {
     this.roomService.updateMultipleVotesPerCard(this.room.id, allowMultipleVotesPerCard)
     .subscribe((result) => {
       this.room = result;
+    });
+  }
+
+  onToggleShowResults(showResults: boolean): void {
+    this.roomService.updateShowResults(this.room.id, showResults)
+    .subscribe((result) => {
+      this.room = result;
+      this.updateCards();
     });
   }
 

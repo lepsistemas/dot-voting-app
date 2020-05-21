@@ -21,7 +21,9 @@
         "CONFIGURATION": {
           "TITLE": "Configuração da sala",
           "KEY": "Chave da sala",
-          "NUM-VOTES": "Número de votos que cada convidado tem"
+          "NUM-VOTES": "Número de votos que cada convidado tem",
+          "MULTIPLE-VOTES-PER-CARD": "Permitir votar no mesmo cartão mais de um vez",
+          "SHOW-RESULTS": "Mostrar resultados"
         },
         "FORM": {
           "NEW-CARD": "Novo cartão",

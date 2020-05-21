@@ -15,7 +15,9 @@
             <input matInput type="number" min="0" value="{{ room?.numberOfVotes }}" (change)="onNumberOfVotesChanges($event.target.value)">
         </mat-form-field>
         <br/>
-        <mat-slide-toggle [checked]="room?.allowMultipleVotesPerCard" (change)="onToggleMultipleVotesPerCard($event.checked)">{{ 'PAGES.ROOM.CONFIGURATION.NUM-VOTES' | translate }}</mat-slide-toggle>
+        <mat-slide-toggle [checked]="room?.allowMultipleVotesPerCard" (change)="onToggleMultipleVotesPerCard($event.checked)">{{ 'PAGES.ROOM.CONFIGURATION.MULTIPLE-VOTES-PER-CARD' | translate }}</mat-slide-toggle>
+        <br/>
+        <mat-slide-toggle [checked]="room?.showResults" (change)="onToggleShowResults($event.checked)">{{ 'PAGES.ROOM.CONFIGURATION.SHOW-RESULTS' | translate }}</mat-slide-toggle>
     </mat-expansion-panel>
 </div>
 
@@ -53,7 +55,7 @@
         <mat-card>
             <mat-card-title class="card-votes">
                 &nbsp;
-                <span matBadge="{{ card?.votes }}" matBadgeOverlap="false" matBadgeColor="accent">
+                <span matBadge="{{ room?.showResults ? card?.votes : '?' }}" matBadgeOverlap="false" matBadgeColor="accent">
                     <mat-icon color="warn">favorite</mat-icon>
                 </span>
             </mat-card-title>
