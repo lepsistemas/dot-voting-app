@@ -3,10 +3,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { CardService } from '../../service/card/card.service';
 import { RoomService } from '../../service/room/room.service';
+import { VoteService } from '../../service/vote/vote.service';
 
 import { User } from '../../model/user';
 import { Room } from '../../model/room';
 import { Card } from '../../model/card';
+import { Vote } from '../../model/vote';
 
 @Component({
   selector: 'app-main-room',
@@ -26,7 +28,7 @@ export class MainRoomComponent implements OnInit {
 
   Arr = Array;
 
-  constructor(private cardService: CardService, private roomService: RoomService) { }
+  constructor(private cardService: CardService, private roomService: RoomService, private voteService: VoteService) { }
 
   ngOnInit(): void {
     this.newCardForm = new FormGroup({
@@ -77,7 +79,15 @@ export class MainRoomComponent implements OnInit {
   }
 
   onVote(cardId: number) {
-    console.log(cardId);
+    const vote: Vote = {
+      cardId: cardId,
+      voterId: this.me.id
+    }
+    this.voteService.give(vote)
+    .subscribe(() => {
+      this.updateCards();
+    });
+    console.log(cardId, this.me.username);
   }
 
 }

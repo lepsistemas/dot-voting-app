@@ -1,7 +1,7 @@
 export class Card {
     id: number;
     title: string;
-    description: boolean;
+    description: string;
     roomId: number;
     userId: number;
     votes: number;
