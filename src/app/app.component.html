@@ -1,5 +1,5 @@
 <app-loader></app-loader>
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="tool-bar">
     <span>{{ 'APP.TITLE' | translate }}</span>
     <span class="fill-space"></span>
     <span class="select-language">
@@ -8,4 +8,4 @@
         <a (click)="setLanguage('pt-BR')">Português</a>
     </span>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<router-outlet class="main-content"></router-outlet>

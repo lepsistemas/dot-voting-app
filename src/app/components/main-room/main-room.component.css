@@ -27,6 +27,12 @@
 }
 
 .mat-card-content {
-    height: 103px;
+    height: 74px;
     overflow-y: auto;
+}
+
+.card-votes {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
 }

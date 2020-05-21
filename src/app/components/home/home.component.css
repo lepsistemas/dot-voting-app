@@ -1,7 +1,12 @@
 .container {
     color: white;
-    height: 100%;
     padding: 10px;
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
 }
 
 :host >>> 

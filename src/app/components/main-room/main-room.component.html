@@ -51,11 +51,12 @@
     </div>
     <div class="cardItem" *ngFor="let card of cards">
         <mat-card>
-            <mat-card-title>{{ (card.title.length > 38) ? (card.title | slice:0:38) + '...' : (card.title) }}</mat-card-title>
-            <mat-card-subtitle>
-                <mat-icon color="warn"*ngFor="let i of Arr(card?.votes).fill(1)">favorite</mat-icon>
-                <div *ngIf="card?.votes === 0" style="height: 2em;">&nbsp;</div>
-            </mat-card-subtitle>
+            <mat-card-title class="card-votes">
+                &nbsp;
+                <span matBadge="{{ card?.votes }}" matBadgeOverlap="false" matBadgeColor="accent">
+                    <mat-icon color="warn">favorite</mat-icon>
+                </span>
+            </mat-card-title>
             <mat-card-content>
                 <strong>{{ card.title }}</strong>
                 <br/><br/>

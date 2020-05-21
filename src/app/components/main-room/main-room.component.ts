@@ -87,7 +87,6 @@ export class MainRoomComponent implements OnInit {
     .subscribe(() => {
       this.updateCards();
     });
-    console.log(cardId, this.me.username);
   }
 
 }
